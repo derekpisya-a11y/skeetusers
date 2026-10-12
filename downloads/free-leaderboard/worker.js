@@ -1,5 +1,5 @@
 // Plate Club leaderboard for Cloudflare Workers Free + D1.
-// Bind a D1 database under the variable name DB in the Worker dashboard.
+// Bind a D1 database as DB or MY_DB in the Worker dashboard.
 const TABLE_SQL = `CREATE TABLE IF NOT EXISTS players (
   id TEXT PRIMARY KEY,
   token_hash TEXT NOT NULL,
@@ -95,14 +95,15 @@ export default {
     const path = new URL(request.url).pathname;
     const registration = request.method === "POST" && path === "/v1/register";
     if (limited(request, registration)) return reply({ error: "Слишком много запросов. Попробуйте позже." }, 429);
-    if (!env.DB) return reply({ error: "База D1 не подключена: добавьте binding с именем DB." }, 503);
+    const db = env.DB || env.MY_DB;
+    if (!db) return reply({ error: "База D1 не подключена: добавьте binding DB или MY_DB." }, 503);
     try {
-      await ensureTable(env.DB);
+      await ensureTable(db);
       if (request.method === "GET" && path === "/health") {
         return reply({ ok: true, version: "2.1.0", storage: "D1" });
       }
       if (request.method === "GET" && path === "/v1/leaderboard") {
-        const result = await env.DB.prepare(
+        const result = await db.prepare(
           "SELECT id, name, score, updated FROM players ORDER BY score DESC, updated ASC, id ASC LIMIT 100"
         ).all();
         const players = result.results.map((player, index) => ({ ...player, rank: index + 1 }));
@@ -121,7 +122,7 @@ export default {
         const name = nameOrError(data.name);
         const id = crypto.randomUUID().replaceAll("-", "");
         const token = newToken();
-        await env.DB.prepare(
+        await db.prepare(
           "INSERT INTO players (id, token_hash, name, updated) VALUES (?, ?, ?, ?)"
         ).bind(id, await hashToken(token), name, Math.floor(Date.now() / 1000)).run();
         return reply({ ok: true, id, token }, 201);
@@ -129,12 +130,12 @@ export default {
       const id = typeof data.id === "string" ? data.id : "";
       const token = request.headers.get("Authorization")?.match(/^Bearer ([A-Za-z0-9_-]{20,100})$/)?.[1] || "";
       if (!/^[a-f0-9]{32}$/.test(id) || !token) return reply({ error: "Профиль не авторизован." }, 401);
-      const player = await env.DB.prepare("SELECT id, score FROM players WHERE id = ? AND token_hash = ?")
+      const player = await db.prepare("SELECT id, score FROM players WHERE id = ? AND token_hash = ?")
         .bind(id, await hashToken(token)).first();
       if (!player) return reply({ error: "Профиль не авторизован." }, 401);
       const name = nameOrError(data.name);
       const score = scoreOrError(data.stats);
-      await env.DB.prepare("UPDATE players SET name = ?, score = MAX(score, ?), updated = ? WHERE id = ?")
+      await db.prepare("UPDATE players SET name = ?, score = MAX(score, ?), updated = ? WHERE id = ?")
         .bind(name, score, Math.floor(Date.now() / 1000), id).run();
       return reply({ ok: true, score: Math.max(score, player.score) });
     } catch (error) {

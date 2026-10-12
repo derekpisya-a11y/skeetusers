@@ -24,9 +24,9 @@ Cloudflare предоставляет тариф Free с лимитами на �
 
 Если у уже созданного проекта появляется ошибка **«Bindings cannot be added to a Worker that only has static assets»**, в нём есть только статические файлы. Создайте **новый** Worker через **Start with Hello World!** и продолжайте с ним. Старый проект не содержит игрового прогресса; он не нужен для таблицы.
 
-Откройте новый Worker и вкладку **Bindings** (в некоторых версиях панели — **Settings → Bindings**). Нажмите **Add binding → D1 database → Add binding**. В поле **Variable name** введите **`DB`** строго заглавными латинскими буквами и выберите базу `plateclub-leaders`. Сохраните привязку и подтвердите **Deploy**, если панель предложит применить изменение. Имя `DB` важно: именно так код обращается к базе.
+Если на экране показан пример с `type OrderRow`, `CustomerName` и `env.MY_DB`, это **пример кода**, а не форма настройки базы. Здесь поля **Variable name** не будет. Откройте **Workers & Pages → имя вашего Worker → Edit code**. Замените **весь код в редакторе** содержимым [worker.js](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/free-leaderboard/worker.js) и нажмите **Save and deploy** или **Deploy**. Код игры понимает оба имени привязки: `DB` и `MY_DB`.
 
-Затем нажмите **Edit code** (иногда **Quick edit**). Откройте [worker.js](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/free-leaderboard/worker.js), скопируйте **весь** его текст, удалите примерный код Cloudflare в редакторе, вставьте скопированное и нажмите **Save and deploy** или **Deploy**. На этом сервер создан. SQL вручную выполнять не требуется.
+После этого вернитесь на **страницу самого Worker** и откройте вкладку **Bindings** (в некоторых версиях панели — **Settings → Bindings**). Нажмите **Add binding → D1 database → Add binding**. В поле **Variable name**, если оно появится, введите `DB`; если Cloudflare уже создал привязку `MY_DB`, оставьте её. Выберите базу `plateclub-leaders` и сохраните. Поле находится в форме привязки, не в редакторе. На этом сервер готов. SQL вручную выполнять не требуется.
 
 ## 4. Проверьте сервер
 
@@ -54,7 +54,7 @@ https://plateclub-vashe-imya.имя-аккаунта.workers.dev
 
 - **«Bindings cannot be added to a Worker that only has static assets».** Это проект без кода Worker. Вернитесь в **Workers & Pages → Create application** и выберите **Start with Hello World! → Get started**, затем **Deploy**. Добавляйте D1 в новом Worker.
 - **В браузере открывается старый пример «Hello World».** Вы не сохранили код из `worker.js` или открыли другой Worker. Вставьте код снова и нажмите Deploy.
-- **`/health` показывает ошибку про `DB`.** Добавьте к этому Worker привязку **D1 database** с именем `DB` и выберите созданную базу.
+- **`/health` показывает ошибку про `DB` или `MY_DB`.** На странице Worker откройте вкладку **Bindings** и привяжите созданную базу как `DB` или `MY_DB`. Один только пример `env.MY_DB` в редакторе не создаёт привязку.
 - **`/health` работает, а игра пишет «Сервер недоступен».** В игре введите точный `https://...workers.dev` без `/health`; проверьте интернет устройства. Адрес `localhost` для общего сервера не подходит.
 - **Игра пишет «Некорректный запрос или имя».** Укажите имя длиной 2–24 символа из букв/цифр, пробела, `_` или `-`.
 - **Игра пишет «Профиль не авторизован».** Это возможно после удаления базы игроков. Создайте новую базу и новый Worker с другим адресом; при смене адреса игра автоматически зарегистрирует новый профиль.
