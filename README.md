@@ -1,21 +1,35 @@
-# Номерной клуб 2.0
+# Номерной клуб 2.1
 
-Нативная игра Godot для Android (вертикально) и Windows (широкое окно).
+Нативная игра Godot 4.6.3 для Android (вертикально) и Windows (широкое окно).
 
-- [PlateClub-Windows-x64.zip](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/v2/PlateClub-Windows-x64.zip) — 36.2 МиБ
-- [PlateClub-Android.zip](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/v2/PlateClub-Android.zip) — 26.9 МиБ
-- [PlateClub-Godot-Source.zip](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/v2/PlateClub-Godot-Source.zip) — 1.6 МиБ
+В коллекции появились флажки на карточках, «Продать выбранные» и «Продать все». Перед продажей показываются количество, сумма и предупреждение об эпических/легендарных номерах. Избранные, установленные и номера в сейфе защищены. «Выделить видимые» учитывает фильтры; «Продать все» включает всю доступную коллекцию. Продажи учитываются в заданиях.
 
-Windows: распакуйте ZIP и запустите PlateClub.exe. Android: распакуйте ZIP и установите APK (Android 7.0+, arm64).
+## Скачать игру
 
-Для редактирования скачайте исходный ZIP, распакуйте папку PlateClub, импортируйте project.godot в Godot4.6.3 Standard и нажмите F5.
+- [PlateClub-Windows-x64.zip](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/v2.1/PlateClub-Windows-x64.zip) — 36.4 МиБ
+- [PlateClub-Android.zip](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/v2.1/PlateClub-Android.zip) — 26.9 МиБ
+- [PlateClub-Godot-Source.zip](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/v2.1/PlateClub-Godot-Source.zip) — 1.9 МиБ
 
-В версии2: четыре темы, реальные названия моделей, сейф, платное расширение коллекции, задания и доллары, более сложные сундуки, дорогие обвесы и объяснение редких комбинаций по шагам со звуком.
+Windows: распакуйте ZIP и запустите PlateClub.exe. Android: распакуйте ZIP и установите APK (Android 7.0+, arm64). APK подписан тем же тестовым ключом: обновляйте поверх прежней игры, не удаляя приложение. Сохранения версий 1/2 поддерживаются.
 
-Общая таблица реализована в клиенте и отдельном сервере. Публичный сервер не размещён; инструкция его развёртывания лежит в исходном ZIP.
+Для редактирования распакуйте исходный ZIP, импортируйте project.godot в Godot 4.6.3 Standard и нажмите F5.
 
-Исторические ведомственные атрибуции спецсерий не подтверждены веб-исследованием: доступ к источникам блокируется сетью. В игре они помечены как неофициальные/ожидающие проверки. Подробности в PLATE_REFERENCE_RU.md исходного ZIP.
+## Общая таблица лидеров
 
-Проверки: логика225/0, сервер11/0, нативный UI85/0 в двух режимах. Физические Android/Windows-устройства не тестировались. Android APK имеет портретную ориентацию, подпись того же тестового ключа и код версии2.
+- [Прочитать пошаговое руководство](https://github.com/derekpisya-a11y/skeetusers/blob/plate-club-downloads/downloads/v2.1/LEADERBOARD_SETUP_RU.md)
+- [Скачать отдельный TXT-файл](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/v2.1/LEADERBOARD_SETUP_RU.txt)
+- [Скачать только сервер и инструкцию](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/v2.1/PlateClub-Leaderboard-Server.zip)
 
-Предыдущая Windows-версия сохранена в downloads/PlateClub-Windows-x64.zip. Основная ветка не изменена.
+Для общей таблицы владелец размещает сервис на VPS с доменом и HTTPS. Игра остаётся установленной на телефоне/ПК; Godot, EXE и APK на VPS не нужны. Все игроки вводят один HTTPS-адрес в разделе «Лидеры». Публичный сервер пока не размещён.
+
+## Снимки
+
+![Массовая продажа в коллекции](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/v2.1/previews/collection.png)
+
+![Подтверждение на телефоне](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/v2.1/previews/bulk-sale-android.png)
+
+Сохранены четыре темы, реальные названия моделей, сейф, задания/доллары, сложные сундуки, обвесы и разбор редких номеров. Исторические атрибуции спецсерий не подтверждены веб-исследованием и помечены в игре; подробности в PLATE_REFERENCE_RU.md исходного архива.
+
+Проверено: логика 243/0; сервер 11/0; нативный UI 108/0 в каждом режиме с тестовым сервером; свежий исходный ZIP импортируется без ошибок исполнения. Проверены подпись, номер версии 2.1.0/code 3, портретная ориентация APK, состав и контрольные суммы архивов. Физические Android/Windows-устройства не тестировались.
+
+[SHA256SUMS.txt](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/v2.1/SHA256SUMS.txt). Предыдущие файлы сохранены в downloads/v2 и downloads/PlateClub-Windows-x64.zip.
