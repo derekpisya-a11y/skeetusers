@@ -14,7 +14,15 @@ Windows: распакуйте ZIP и запустите PlateClub.exe. Android: 
 
 Для редактирования распакуйте исходный ZIP, импортируйте project.godot в Godot 4.6.3 Standard и нажмите F5.
 
-## Общая таблица лидеров
+## Бесплатная таблица лидеров без VPS
+
+Можно запустить таблицу на Cloudflare Workers + D1: нужен аккаунт Free, а адрес `https://...workers.dev` затем указывают все игроки в разделе «Лидеры». Сборку игры менять не нужно.
+
+- [Пошаговая инструкция](https://github.com/derekpisya-a11y/skeetusers/blob/plate-club-downloads/downloads/free-leaderboard/LEADERBOARD_FREE_RU.md)
+- [Скачать инструкцию TXT](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/free-leaderboard/LEADERBOARD_FREE_RU.txt)
+- [Скачать код и инструкцию ZIP](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/free-leaderboard/PlateClub-Free-Leaderboard.zip)
+
+## Свой сервер на VPS
 
 - [Прочитать пошаговое руководство](https://github.com/derekpisya-a11y/skeetusers/blob/plate-club-downloads/downloads/v2.1/LEADERBOARD_SETUP_RU.md)
 - [Скачать отдельный TXT-файл](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/v2.1/LEADERBOARD_SETUP_RU.txt)

@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS players (
+  id TEXT PRIMARY KEY,
+  token_hash TEXT NOT NULL,
+  name TEXT NOT NULL,
+  score INTEGER NOT NULL DEFAULT 0,
+  updated INTEGER NOT NULL
+);
