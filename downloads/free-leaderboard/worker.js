@@ -144,6 +144,12 @@ export default {
         return reply({ error: error.message }, 400);
       }
       console.error("Ошибка хранилища таблицы лидеров:", error);
+      // /health runs only fixed schema initialization and has no player input.
+      // Show that diagnostic here so a new owner can fix D1 without finding logs.
+      if (request.method === "GET" && path === "/health") {
+        const detail = error instanceof Error ? error.message : String(error);
+        return reply({ error: "Не удалось проверить базу D1.", detail: detail.slice(0, 300) }, 503);
+      }
       return reply({ error: "База временно недоступна. Проверьте привязку DB." }, 503);
     }
   },
