@@ -1,21 +1,21 @@
-# Номерной клуб — Windows
+# Номерной клуб 2.0
 
-[Скачать Windows ZIP](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/PlateClub-Windows-x64.zip)
+Нативная игра Godot для Android (вертикально) и Windows (широкое окно).
 
-Архив: 37 681 675 байт (около 36 МиБ).
+- [PlateClub-Windows-x64.zip](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/v2/PlateClub-Windows-x64.zip) — 36.2 МиБ
+- [PlateClub-Android.zip](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/v2/PlateClub-Android.zip) — 26.9 МиБ
+- [PlateClub-Godot-Source.zip](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/v2/PlateClub-Godot-Source.zip) — 1.6 МиБ
 
-1. Скачайте ZIP по ссылке выше. Если GitHub просит вход, войдите в свой аккаунт.
-2. Распакуйте архив целиком обычным архиватором Windows.
-3. Запустите `PlateClub.exe` из распакованной папки.
+Windows: распакуйте ZIP и запустите PlateClub.exe. Android: распакуйте ZIP и установите APK (Android 7.0+, arm64).
 
-Godot устанавливать для запуска не требуется. EXE содержит все ресурсы.
+Для редактирования скачайте исходный ZIP, распакуйте папку PlateClub, импортируйте project.godot в Godot4.6.3 Standard и нажмите F5.
 
-Это самостоятельная 2D-игра на Godot 4.6.3: восемь форматов номеров, 36 вымышленных автомобилей, шесть коллекций, обмены на сундуки и локальные сохранения.
+В версии2: четыре темы, реальные названия моделей, сейф, платное расширение коллекции, задания и доллары, более сложные сундуки, дорогие обвесы и объяснение редких комбинаций по шагам со звуком.
 
-Сборка Windows x86_64 не подписана коммерческим сертификатом. Логика и интерфейс проверены в Linux; запуск на Windows ещё требуется проверить на устройстве.
+Общая таблица реализована в клиенте и отдельном сервере. Публичный сервер не размещён; инструкция его развёртывания лежит в исходном ZIP.
 
-Контрольная сумма SHA-256:
+Исторические ведомственные атрибуции спецсерий не подтверждены веб-исследованием: доступ к источникам блокируется сетью. В игре они помечены как неофициальные/ожидающие проверки. Подробности в PLATE_REFERENCE_RU.md исходного ZIP.
 
-`f510f240d1e1f5e7621327b107ff465953d64fdea61c8034c17409c59b46719b`
+Проверки: логика225/0, сервер11/0, нативный UI85/0 в двух режимах. Физические Android/Windows-устройства не тестировались. Android APK имеет портретную ориентацию, подпись того же тестового ключа и код версии2.
 
-В этой ветке опубликован только пакет Windows и инструкция. Основная ветка репозитория не изменена.
+Предыдущая Windows-версия сохранена в downloads/PlateClub-Windows-x64.zip. Основная ветка не изменена.
