@@ -143,6 +143,7 @@ export default {
           (error instanceof Error && (error.message.startsWith("Некоррект") || error.message.startsWith("Не передана")))) {
         return reply({ error: error.message }, 400);
       }
+      console.error("Ошибка хранилища таблицы лидеров:", error);
       return reply({ error: "База временно недоступна. Проверьте привязку DB." }, 503);
     }
   },
