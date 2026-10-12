@@ -1,0 +1,3 @@
+2e8db51bfd0ccdc3c5d7079928e9dca80f12351d4e271eddb99bf989c3690bf8  PlateClub-Windows-x64.zip
+50501125358c35f984e826afcac37a5f5d204a8cbbc1865114d0fbd31f790f80  PlateClub-Android.zip
+3aa2a4ac6b0e47de46ede9a156630392f339d31c774eb3e66f91001c6d58a344  PlateClub-Godot-Source.zip
