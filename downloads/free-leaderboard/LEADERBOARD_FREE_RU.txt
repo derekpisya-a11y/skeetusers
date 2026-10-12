@@ -20,9 +20,11 @@ Cloudflare предоставляет тариф Free с лимитами на �
 
 ## 3. Создайте Worker
 
-Откройте **Workers & Pages → Create application → Create Worker**. Придумайте свободное имя, например, `plateclub-vashe-imya`. Нажмите **Deploy** для создания начального Worker.
+Откройте **Workers & Pages → Create application → Start with Hello World! → Get started**. Придумайте свободное имя, например, `plateclub-vashe-imya`. Нажмите **Deploy** для создания начального Worker с кодом. Это точный путь из [инструкции Cloudflare для D1](https://developers.cloudflare.com/d1/get-started/#1-create-a-worker). Не выбирайте загрузку статических файлов или Pages.
 
-Откройте созданный Worker. В разделе **Settings → Bindings** нажмите **Add binding**, выберите **D1 database**, укажите имя переменной **`DB`** строго заглавными латинскими буквами и выберите базу `plateclub-leaders`. Сохраните привязку и подтвердите **Deploy**, если панель предложит применить изменение. Имя `DB` важно: именно так код обращается к базе.
+Если у уже созданного проекта появляется ошибка **«Bindings cannot be added to a Worker that only has static assets»**, в нём есть только статические файлы. Создайте **новый** Worker через **Start with Hello World!** и продолжайте с ним. Старый проект не содержит игрового прогресса; он не нужен для таблицы.
+
+Откройте новый Worker и вкладку **Bindings** (в некоторых версиях панели — **Settings → Bindings**). Нажмите **Add binding → D1 database → Add binding**. В поле **Variable name** введите **`DB`** строго заглавными латинскими буквами и выберите базу `plateclub-leaders`. Сохраните привязку и подтвердите **Deploy**, если панель предложит применить изменение. Имя `DB` важно: именно так код обращается к базе.
 
 Затем нажмите **Edit code** (иногда **Quick edit**). Откройте [worker.js](https://github.com/derekpisya-a11y/skeetusers/raw/refs/heads/plate-club-downloads/downloads/free-leaderboard/worker.js), скопируйте **весь** его текст, удалите примерный код Cloudflare в редакторе, вставьте скопированное и нажмите **Save and deploy** или **Deploy**. На этом сервер создан. SQL вручную выполнять не требуется.
 
@@ -50,6 +52,7 @@ https://plateclub-vashe-imya.имя-аккаунта.workers.dev
 
 ## Если что-то не получилось
 
+- **«Bindings cannot be added to a Worker that only has static assets».** Это проект без кода Worker. Вернитесь в **Workers & Pages → Create application** и выберите **Start with Hello World! → Get started**, затем **Deploy**. Добавляйте D1 в новом Worker.
 - **В браузере открывается старый пример «Hello World».** Вы не сохранили код из `worker.js` или открыли другой Worker. Вставьте код снова и нажмите Deploy.
 - **`/health` показывает ошибку про `DB`.** Добавьте к этому Worker привязку **D1 database** с именем `DB` и выберите созданную базу.
 - **`/health` работает, а игра пишет «Сервер недоступен».** В игре введите точный `https://...workers.dev` без `/health`; проверьте интернет устройства. Адрес `localhost` для общего сервера не подходит.
